@@ -1,0 +1,12 @@
+import argparse
+from CalCalc import calculate
+parser = argparse.ArgumentParser(description='This is a calculator')
+parser.add_argument('question', type = str, help = 'question you wanna ask the calculator')
+parser.add_argument('-v','--version', action = 'store_true', help = 'The version of the calculator' )
+args = parser.parse_args()
+result = calculate(args.question)
+print str(result)
+if args.version:
+    print 'This calculator is in version ' + '1.0'
+else:
+    pass
