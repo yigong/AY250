@@ -24,10 +24,26 @@
 	"buffers":
 	[
 		{
-			"contents": "import numpy as np\nimport pprint\nimport matplotlib.pyplot as plt\ndtp = [('frac_followed', 'f128'), ('frac_observed', 'f128')\\\n       ,('frac_obs_unc', 'f128')]\nEff = np.loadtxt('Efficiency.txt',dtype = dtp, skiprows=1)\nPurity = np.loadtxt('Purity.txt',dtype = dtp, skiprows=2)\n\nf0, [ax0,ax1] = plt.subplots(1,2)\nax0.plot(Eff['frac_followed'],Eff['frac_observed'], color = 'k')\nax0.plot(Eff['frac_followed'],Eff['frac_observed']+Eff['frac_obs_unc'], color = '0.55')\nax0.plot(Eff['frac_followed'],Eff['frac_observed']-Eff['frac_obs_unc'], color = '0.55')\nax0.fill_between(Eff['frac_followed'],Eff['frac_observed']-Eff['frac_obs_unc'],Eff['frac_observed']+Eff['frac_obs_unc'],color ='0.75' )\nax0.set_xlim(-0.04,1.04)\nax0.set_xlabel('Fraction of GRBs Followed Up')\nax0.set_ylabel('Fraction of high (z>4)GRBs observed')\nax0.set_title('Efficiecy')\n\n\n",
+			"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p1.py",
 			"settings":
 			{
-				"buffer_size": 844,
+				"buffer_size": 954,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p2.py",
+			"settings":
+			{
+				"buffer_size": 658,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p4.py",
+			"settings":
+			{
+				"buffer_size": 771,
 				"line_ending": "Unix"
 			}
 		}
@@ -35,19 +51,23 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 67.0,
+		"height": 107.0,
 		"selected_items":
 		[
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"py	",
+				"Set Syntax: Python"
+			],
 			[
 				"pyth",
 				"Set Syntax: Python"
 			],
 			[
 				"pytho",
-				"Set Syntax: Python"
-			],
-			[
-				"py",
 				"Set Syntax: Python"
 			],
 			[
@@ -84,6 +104,9 @@
 	},
 	"file_history":
 	[
+		"/Users/Yigong/Documents/Python/AY250/hw3/hw3_2_subl.py",
+		"/Users/Yigong/Documents/Python/AY250/hw3/hw3_1_subl.py",
+		"/Users/Yigong/Documents/Python/AY250/hw3/hw3_3_subl.py",
 		"/Users/Yigong/Documents/Python/AY250/hw2/CalCalc_test.py",
 		"/Users/Yigong/Documents/Python/AY250/hw2/Submit/setup.py",
 		"/Users/Yigong/Documents/Python/AY250/hw2/Submit/parser_CalCalc",
@@ -128,28 +151,82 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p1.py",
 					"settings":
 					{
-						"buffer_size": 844,
+						"buffer_size": 954,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								844,
-								844
+								954,
+								954
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p2.py",
+					"settings":
+					{
+						"buffer_size": 658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								658,
+								658
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/Yigong/Documents/Study/13_Fall/BioE165/hw3/p4.py",
+					"settings":
+					{
+						"buffer_size": 771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								590,
+								590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
