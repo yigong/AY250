@@ -26,6 +26,8 @@ Result:
 The data are still being trained at 5 pm. No result yet.
 The random guessing will give an accuracy of 2%.
 
+I got a mean score of 15%, which is much higher than the random guessing.
+
 Running files:
 'hw4_training.ipynb' is the script written for training the data. 
 
@@ -34,3 +36,11 @@ Running files:
 'run_final_classifier.ipynb' is the script to give prediction on the new images. You can run it in ipython notebook by run_final_classifier(path) after running the function.
 
 'categories.p' is the file contain a dict descibing the categories. Please download it to the same folder as run_final_classifier.ipynb before running it.
+
+'data_update.p' contains the data array.
+
+The file containing classifier object is ~ 300mb. I didn't add it to my repo.
+
+
+
+

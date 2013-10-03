@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <codecell>
+
 # import
 #!/usr/bin/env python
 import matplotlib.pyplot as plt
@@ -14,7 +19,7 @@ from time import time
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 import sklearn.cross_validation as cross_v
-
+import gc
 
 def row(img2d):
     return np.shape(img2d)[0]
@@ -97,7 +102,11 @@ def features(image_path):
     hough = houghLine(img2d_gray)
     
     cate = cate_extract(image_path)
-    
+    del img2d
+    del img2d_gray
+    gc.collect()
+    print cate
+
     return list([row_n, col_n, red_mean, green_mean, blue_mean, gray_mean,\
                      red_most,green_most,blue_most, gray_most,\
                      length, sobel_h, sobel_v, sobel, hough, cate])
@@ -145,8 +154,9 @@ for category in categories:
     image_names = listdir(MYDIRECTORY  + "/" + category)
     for name in image_names:
         image_paths.append(MYDIRECTORY + "/" + category + "/" + name)
-ip = image_paths    
-image_paths = image_paths
+batch = 265
+i = 15
+image_paths = image_paths[(i*batch):]  
 print ("There should be 4244 images, actual number is " + 
     str(len(image_paths)) + ".")
 # Then, we run the feature extraction function using multiprocessing.Pool so 
@@ -159,6 +169,8 @@ print ("There should be 4244 images, actual number is " +
 #features_array = np.zeros(len(image_paths), nFeature)
 
 numprocessors = cpu_count()
+
+
 
 # We have to cut up the image_paths list into the number of processes we want to
 # run. 
@@ -185,17 +197,22 @@ combined_result = []
 for single_proc_result in poolresult:
     for single_image_result in single_proc_result:
         combined_result.append(single_image_result)
-DATA = np.array(combined_result)
 
 # DATA contains all the data we wanna train. Now is the training part.
-X = DATA[:,:-1]
-Y = DATA[:,-1]
-clf = RandomForestClassifier(n_estimators=50, n_jobs=-1, \
-                             compute_importances=True)
-clf.fit(X,Y)
-scores = cross_v.cross_val_score(clf, X, Y, cv = cross_v.KFold(len(Y), 5))
-# save the classifier
-pickle.dump(X, open('data_X.p'), 'w')
-pickle.dump(Y, open('data_Y.p'), 'w')
-pickle.dump(clf, open('trained_classifier.p','w')) 
-pickle.dump(scores, open('score.p'), 'w')
+
+#clf = RandomForestClassifier(n_estimators=50, n_jobs=-1, \
+#                             compute_importances=True)
+#clf.fit(X,Y)
+#scores = cross_v.cross_val_score(clf, X, Y, cv = cross_v.KFold(len(Y), 5))
+#save the classifier
+
+try:
+    DATA = pickle.load(open('data.p', 'rb'))    
+except EOFError:
+    DATA = list()
+DATA.extend(combined_result)
+pickle.dump(DATA, open('data.p', 'w'))
+
+#pickle.dump(clf, open('trained_classifier.p','w')) 
+#pickle.dump(scores, open('score.p', 'w'))
+
