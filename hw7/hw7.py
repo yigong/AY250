@@ -204,11 +204,8 @@ label_open_df.set_index('created_at', inplace=True)
 bug_df = label_open_df.ix[label_open_df['label']=='Bug']
 LABELS = label_open_df['label'].drop_duplicates().values[1:]
 time_per_label = pd.DataFrame([])
-<<<<<<< HEAD
+
 for label_str in LABELS:
-=======
-for label_str in LABELS[:5]:
->>>>>>> 41f08283db9c343c956ebedf0a56330b863e3f29
     temp = label_open_df.ix[label_open_df['label']==label_str]['open_day']
     label_month = temp.resample('M', how='mean')
     label_month.name = label_str
