@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+
+		<p>
+			<a href={{m_page}}>Back to Main Page</a>
+		</p>
+		<!--Hyperlink back to the main page-->
+		
+		<p>
+			A database is present. Please insert a new collection by upload a BibTex file with the form below.
+		</p>
+		<!--description text-->
+		
+		<form action={{m_page}} method='POST' enctype=multipart/form-data>
+		<!--<form> tag is for creating an HTML form for user input-->	
+		<!--[action], in URL, specifies where to send the form-data when its submitted-->
+			Collection Name: <input type='text' name='collection_name'>
+			<input type='file' name='Bib_file'>
+			<!--input type is 'file'-->
+			<!--'name' is the variable name that the input file assign to-->
+			<input type='submit' value='upload!'>
+			<!--'submit' defines a submit button with 'value'-->
+
+		</form>
+
+	</body>
+</html>
