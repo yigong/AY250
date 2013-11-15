@@ -1,27 +1,36 @@
 ## import everything we need in the future
-import sqlite3
+from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect,\
 				  url_for, abort, render_template, flash
 from contextlib import closing
+from werkzeug import secure_filename
+
+UPLOAD_FOLDER = './'
+
+
 
 app = Flask(__name__)
 # app is the instance created. 
 # '__name__' is the name used to find resources on the file system; 
 # '__name__' gives Flask an idea what belongs to your application(???)
 
-app.debug = True
 # turn on debug mode 1) server provides a helpful debugger 2) server reloads it self on code changes 
 
+app.config.update(dict(DATABASE ='/tmp/flaskr.db', DEBUG = True))
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ## configuration
-DATABASE = '/tmp/flaskr.db'
-DEBUG = True
-SECRET_KEY = 'key'
-USERNAME = 'admin'
-PASSWORD = 'default'
+
+#SECRET_KEY = 'key'
+#USERNAME = 'admin'
+#PASSWORD = 'default'
+
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 def connect_db():
 	'''a function connects database'''
-	return sqlite3.connect(app.config['DATABASE'])
+	rv = sqlite3.connect(app.config['DATABASE'])
+	rv.row_factory = sqlite3.Row
+	return rv
 
 def init_db():
 	'''initiate a database'''
@@ -65,7 +74,7 @@ def query():
 	return render_template('no_query.html')
 
 
-@app.route('/query/<q_str>')
+@app.route('/query/<q_str>', methods=['GET', 'POST'])
 def with_query(q_str):
 	if request.method == 'POST':
 		query_str = request.form['query_str']
@@ -79,8 +88,8 @@ def with_query(q_str):
 
 
 ## create a little application
-app = Flask(__name__)
-app.config.from_object(__name__)
+#app.config.from_object(__name__)
 
 if __name__ == '__main__':
+	init_db()
 	app.run()

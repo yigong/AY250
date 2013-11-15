@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<div id='navi_disp'>
+		{% block navi_disp %}
+		<p>
+			<a href={{url_for('main_page')}}>Back to Main Page</a>
+		</p>
+		<!--Hyperlink back to the main page-->
+		
+		<p>
+			A database is present. you can query it with the form below.<br>
+			please use SQL query syntax!
+		</p>
+		<!--description text-->
+		<form action="{{ url_for('query') }}" method=post>
+			Query string: <input type='text' name='query_str'>
+			<input type='submit' value='Query'>
+		</form>
+		{% endblock %}
+		</div>
+		
+		<div id='body'>
+		{% block body %}{% endblock %}
+		</div>
+	</body>
+</html>

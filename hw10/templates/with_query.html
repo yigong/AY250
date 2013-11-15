@@ -1,0 +1,11 @@
+{% extends "query.html" %}
+{% block body %}
+	<table border='0'>
+	{% for entry in db_entries %}
+		<tr>
+			<td>{{entry.title}}</td>
+			<td>{{entry.text}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% endblock %}
