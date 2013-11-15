@@ -3,8 +3,13 @@
 	<table border='0'>
 	{% for entry in db_entries %}
 		<tr>
-			<td>{{entry.title}}</td>
-			<td>{{entry.text}}</td>
+			<td>Reference Tag: {{entry.reference_tag}}</td>
+			<td>Author List: {{entry.Author}}</td>
+			<td>Journal: {{entry.Journal}}</td>
+			<td>Volume: {{entry.Volume}}</td>
+			<td>Pages: {{entry.Pages}}</td>
+			<td>Year: {{entry.Year}}</td>
+			<td>Title: {{entry.Title}}</td>
 		</tr>
 	{% endfor %}
 	</table>
