@@ -13,7 +13,7 @@
 		</p>
 		<!--description text-->
 		
-		<form action="{{ url_for('main_page', col_name=collection_name) }}" method='POST' enctype=multipart/form-data>
+		<form action="{{ url_for('main_page') }}" method='POST' enctype=multipart/form-data>
 		<!--<form> tag is for creating an HTML form for user input-->	
 		<!--[action], in URL, specifies where to send the form-data when its submitted-->
 			Collection Name: <input type='text' name='collection_name'>

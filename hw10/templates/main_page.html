@@ -2,8 +2,14 @@
 
 <html>
 	<body>
+		<div id='navi'>
 		<p>
 			<a href="{{ url_for('insert_collection') }}">Insert a Collection</a>--<a href="{{ url_for('query') }}">Run a Query</a>
 		</p>
+		</div>
+
+		<div id='body'>
+		{% block body %} {% endblock %}
+		</div>
 	</body>
 </html>
