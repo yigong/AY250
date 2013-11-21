@@ -18,6 +18,7 @@ year_df.set_index('Player', inplace=True)
 MLE_year_se = year_df['H']/(year_df['AB'].astype(float))
 MLE_year_se.name = 'MLE_year'
 
+print 'Maximum likelihood estimation of batting average for each player from April data.'
 print MLE_april_se
 ## part(b)
 a, b = symbols('a b')
@@ -57,7 +58,7 @@ for i, mui in enumerate(mcmc_dict.values()):
 	
 	player_name = MLE_april_se.index[i]
 	print '-'*50
-	print 'Player ' + player_name + ' :'
+	print 'Player : ' + player_name
 	print 'Posterior mean : ' + str(mean_post)
 	print 'Posterior 95% CI : (' + str(ll) + ', ' + str(ul) + ')'
 	
